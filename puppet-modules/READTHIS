@@ -1,0 +1,1 @@
+#This empty directory needs to exist before we have any puppet modules so that the provisioner knows where to look.

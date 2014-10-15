@@ -20,7 +20,6 @@ sudo gem install hiera-eyaml
 #librarian-puppet update
 
 #Do it yourself!
-mkdir /vagrant/puppet-modules
 cd /vagrant/puppet-modules
 git clone git@github.com:SilexConsulting/puppetlabs-apache.git apache
 git clone git@github.com:SilexConsulting/puppetlabs-apt
