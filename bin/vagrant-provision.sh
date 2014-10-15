@@ -9,9 +9,13 @@ fi
 #Temporary - need to add these to the base box? Comment these out after the first run.
 sudo gem install hiera
 sudo gem install hiera-eyaml
+
+#Currently librarian-puppet is not working out of the box for ruby 1.9.1
+#see Puppetfile for required modules
+#sudo gem install librarian-puppet
 #Update puppet module dependencies using librarian-puppet
-cd /vagrant/puppet-modules
-librarian-puppet update
+#cd /vagrant/puppet-modules
+#librarian-puppet update
 
 
 if [ ! -f /vagrant/keys/private_key.pkcs7.pem ];
