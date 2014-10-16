@@ -1,36 +1,36 @@
 #!/usr/bin/env ruby
 #^syntax detection
 
-forge "https://forgeapi.puppetlabs.com."
+forge "https://forgeapi.puppetlabs.com"
 
-mod 'beluga',
+mod 'silex-beluga',
     :git => 'https://github.com/SilexConsulting/puppet-beluga.git'
 
-mod 'apache',
+mod 'silex-apache',
     :git => 'https://github.com/SilexConsulting/puppetlabs-apache.git'
 
-mod 'concat',
+mod 'silex-concat',
     :git => 'https://github.com/SilexConsulting/puppetlabs-concat.git'
 
-mod 'jenkins',
+mod 'silex-jenkins',
     :git => 'https://github.com/SilexConsulting/puppet-jenkins.git'
 
-mod 'mysql',
+mod 'silex-mysql',
     :git => 'https://github.com/SilexConsulting/puppetlabs-mysql.git'
 
-mod 'stdlib',
+mod 'silex-stdlib',
     :git => 'https://github.com/SilexConsulting/puppetlabs-stdlib.git',
     :ref => '3.2.1'
 
-mod 'apt',
+mod 'silex-apt',
     :git => 'https://github.com/SilexConsulting/puppetlabs-apt'
 
-mod 'composer',
+mod 'silex-composer',
     :git => 'https://github.com/SilexConsulting/puppet-composer.git'
 
-mod 'wget',
+mod 'silex-wget',
     :git => 'https://github.com/SilexConsulting/puppet-wget.git'
 
-mod 'postfix',
+mod 'silex-postfix',
     :git => 'https://github.com/SilexConsulting/puppet-postfix.git'
 
