@@ -26,11 +26,11 @@ mod 'silex-apt',
     :git => 'https://github.com/Puppetlabs/puppetlabs-apt'
 
 mod 'silex-composer',
-    :git => 'https://github.com/Puppetlabs/puppet-composer.git'
+    :git => 'https://github.com/SilexConsulting/puppet-composer.git'
 
 mod 'silex-wget',
-    :git => 'https://github.com/Puppetlabs/puppet-wget.git'
+    :git => 'https://github.com/SilexConsulting/puppet-wget.git'
 
 mod 'silex-postfix',
-    :git => 'https://github.com/Puppetlabs/puppet-postfix.git'
+    :git => 'https://github.com/SilexConsulting/puppet-postfix.git'
 
