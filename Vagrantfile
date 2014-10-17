@@ -29,7 +29,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.manifests_path = "./"
     puppet.module_path = "./modules"
     puppet.manifest_file  = "vagrant.pp"
-    puppet.hiera_config_path = "./hiera.yaml"
+    puppet.hiera_config_path = "hiera.yaml"
+    puppet.options = "--verbose --debug"
   end
 
   # Disable automatic box update checking. If you disable this, then
