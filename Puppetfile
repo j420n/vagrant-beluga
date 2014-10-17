@@ -13,7 +13,7 @@ mod 'silex-concat',
     :git => 'https://github.com/Puppetlabs/puppetlabs-concat.git'
 
 mod 'silex-jenkins',
-    :git => 'https://github.com/Puppetlabs/puppet-jenkins.git'
+    :git => 'https://github.com/SilexConsulting/puppet-jenkins.git'
 
 mod 'silex-mysql',
     :git => 'https://github.com/Puppetlabs/puppetlabs-mysql.git'
