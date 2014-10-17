@@ -1,5 +1,5 @@
 keys/
 .tmp/
-modules/
+modules/*/*
 .vagrant
 Puppetfile.lock
