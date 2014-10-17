@@ -23,6 +23,12 @@ sudo gem install hiera-eyaml
 sudo apt-get install ruby1.9.1-dev
 sudo gem install librarian-puppet --verbose
 
+if [ ! -d /vagrant/modules ];
+then
+    cd /vagrant
+    mkdir modules
+fi
+
 cd /vagrant/modules
 librarian-puppet update --verbose
 
