@@ -10,9 +10,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  # This base box lives at
-  # "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
-  config.vm.box = "trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.box     = "trusty-server-cloudimg-amd64-vagrant-disk1"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
   # Use a shell provisioner to Vagrant here which will use
   # rake inside the VM to run vagrant:provision
