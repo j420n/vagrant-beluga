@@ -10,7 +10,7 @@ mod 'silex-apache',
     :git => 'https://github.com/SilexConsulting/puppetlabs-apache.git'
 
 mod 'silex-concat',
-    :git => 'https://github.com/SilexConsulting/puppetlabs-concat.git'
+    :git => 'https://github.com/Puppetlabs/puppetlabs-concat.git'
 
 mod 'silex-jenkins',
     :git => 'https://github.com/SilexConsulting/puppet-jenkins.git'
