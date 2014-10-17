@@ -34,3 +34,5 @@ mod 'silex-wget',
 mod 'silex-postfix',
     :git => 'https://github.com/SilexConsulting/puppet-postfix.git'
 
+mod 'puppet-vcsrepo',
+    :git => 'https://github.com/Puppetlabs/puppet-vcsrepo.git'
