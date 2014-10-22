@@ -4,14 +4,15 @@
 forge "https://forgeapi.puppetlabs.com"
 
 mod 'silex/beluga',
-    :git => 'https://github.com/silex/puppet-beluga.git'
+    :git => 'https://github.com/SilexConsulting/puppet-beluga.git'
 
 mod 'puppet/apache',
     :git => 'https://github.com/Puppetlabs/puppetlabs-apache.git',
     :ref => '1.1.1'
 
 mod 'puppet/concat',
-    :git => 'https://github.com/Puppetlabs/puppetlabs-concat.git'
+    :git => 'https://github.com/Puppetlabs/puppetlabs-concat.git',
+    :ref => '1.1.0-rc1'
 
 mod 'silex/jenkins',
     :git => 'https://github.com/SilexConsulting/puppet-jenkins.git'
