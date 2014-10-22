@@ -3,36 +3,37 @@
 
 forge "https://forgeapi.puppetlabs.com"
 
-mod 'silex-beluga',
-    :git => 'https://github.com/SilexConsulting/puppet-beluga.git'
+mod 'silex/beluga',
+    :git => 'https://github.com/silex/puppet-beluga.git'
 
-mod 'silex-apache',
-    :git => 'https://github.com/Puppetlabs/puppetlabs-apache.git'
+mod 'puppet/apache',
+    :git => 'https://github.com/Puppetlabs/puppetlabs-apache.git',
+    :ref => '1.1.1'
 
-mod 'silex-concat',
+mod 'puppet/concat',
     :git => 'https://github.com/Puppetlabs/puppetlabs-concat.git'
 
-mod 'silex-jenkins',
+mod 'silex/jenkins',
     :git => 'https://github.com/SilexConsulting/puppet-jenkins.git'
 
-mod 'silex-mysql',
+mod 'puppet/mysql',
     :git => 'https://github.com/Puppetlabs/puppetlabs-mysql.git'
 
-mod 'silex-stdlib',
+mod 'puppet/stdlib',
     :git => 'https://github.com/Puppetlabs/puppetlabs-stdlib.git',
     :ref => '4.2.1'
 
-mod 'silex-apt',
+mod 'silex/apt',
     :git => 'https://github.com/Puppetlabs/puppetlabs-apt'
 
-mod 'silex-composer',
+mod 'silex/composer',
     :git => 'https://github.com/SilexConsulting/puppet-composer.git'
 
-mod 'silex-wget',
+mod 'silex/wget',
     :git => 'https://github.com/SilexConsulting/puppet-wget.git'
 
-mod 'silex-postfix',
+mod 'silex/postfix',
     :git => 'https://github.com/SilexConsulting/puppet-postfix.git'
 
-mod 'puppet-vcsrepo',
+mod 'puppet/vcsrepo',
     :git => 'https://github.com/Puppetlabs/puppetlabs-vcsrepo.git'
