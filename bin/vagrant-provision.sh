@@ -39,7 +39,5 @@ then
     eyaml  createkeys
 fi
 
-sudo rm -rf /etc/puppet/modules
-ln -sf /vagrant/modules /etc/puppet/modules
 ln -sf /vagrant/hiera.yaml /etc/puppet/
 ln -sf /vagrant/modules/beluga/files/hieradata /etc/
