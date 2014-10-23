@@ -11,7 +11,7 @@ mod 'silex/apache',
 
 mod 'puppet/concat',
     :git => 'https://github.com/Puppetlabs/puppetlabs-concat.git',
-    :ref => '1.1.0-rc1'
+    :ref => '1.1.1'
 
 mod 'silex/jenkins',
     :git => 'https://github.com/SilexConsulting/puppet-jenkins.git'
