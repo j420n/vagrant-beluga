@@ -6,9 +6,8 @@ forge "https://forgeapi.puppetlabs.com"
 mod 'silex/beluga',
     :git => 'https://github.com/SilexConsulting/puppet-beluga.git'
 
-mod 'puppet/apache',
-    :git => 'https://github.com/Puppetlabs/puppetlabs-apache.git',
-    :ref => '1.1.1'
+mod 'silex/apache',
+    :git => 'https://github.com/SilexConsulting/puppetlabs-apache.git'
 
 mod 'puppet/concat',
     :git => 'https://github.com/Puppetlabs/puppetlabs-concat.git',
@@ -38,3 +37,6 @@ mod 'silex/postfix',
 
 mod 'puppet/vcsrepo',
     :git => 'https://github.com/Puppetlabs/puppetlabs-vcsrepo.git'
+
+mod 'jonhattan/drush',
+    :git => 'https://github.com/jonhattan/puppet-drush.git'
