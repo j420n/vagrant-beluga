@@ -20,7 +20,7 @@ sudo gem install hiera-eyaml
 
 #OPTION 2
 #Update puppet module dependencies using gem install librarian-puppet.
-sudo apt-get install ruby1.9.1-dev
+sudo apt-get install ruby1.9.1-dev -y
 sudo apt-get install git-core -y
 sudo gem install librarian-puppet --verbose
 
