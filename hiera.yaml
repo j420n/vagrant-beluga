@@ -8,9 +8,9 @@
     - common
 
 :yaml:
-    :datadir: '/vagrant/modules/beluga/files/hieradata'
+    :datadir: '/vagrant/hieradata'
 :eyaml:
-    :datadir: '/vagrant/modules/beluga/files/hieradata'
+    :datadir: '/vagrant/hieradata'
     :extension: 'yaml'
 
     # If using the pkcs7 encryptor (default)

@@ -40,4 +40,4 @@ then
 fi
 
 ln -sf /vagrant/hiera.yaml /etc/puppet/
-ln -sf /vagrant/modules/beluga/files/hieradata /etc/
+ln -sf /vagrant/hieradata /etc/
