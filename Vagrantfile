@@ -10,14 +10,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box     = "trusty-server-cloudimg-amd64-vagrant-disk1"
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  #config.vm.box     = "trusty-server-cloudimg-amd64-vagrant-disk1"
+  #config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.box     = "debian-8"
+  config.vm.box_url = "https://github.com/holms/vagrant-jessie-box/releases/download/Jessie-v0.1/Debian-jessie-amd64-netboot.box"
 
   # Use a shell provisioner to Vagrant here which will use
   # rake inside the VM to run vagrant:provision
   # Put a custom vagrant.pp in this directory if you want to run your own manifest.
   config.vm.provision :shell, :path => "bin/vagrant-provision.sh"
 
+  config.vm.hostname = "debian.vagrant"
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
