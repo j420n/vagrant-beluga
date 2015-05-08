@@ -4,6 +4,7 @@
 #################
 classes:
     - beluga::params
+    - beluga::frontend_traffic_director
     - beluga::apache_frontend_server
     - beluga::mysql_server
     - beluga::drush_server
@@ -22,6 +23,9 @@ apt::update_tries: 2
 #BELUGA CONFIGURATION#
 ######################
 #PARAMS
+beluga::developer_tools::install_grunt: true
+beluga::developer_tools::install_git: true
+beluga::developer_tools::install_vim: true
 #beluga::params::hiera_data_dir: /vagrant/modules/beluga/files/hieradata
 beluga::params::wget_package: wget
 beluga::params::install_jdk: true
