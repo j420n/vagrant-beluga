@@ -23,7 +23,7 @@ fi
 #Test for Puppet Master
 command -v puppet master >/dev/null 2>&1 || {
                                       echo >&2 "Puppetmaster is required, but it is not installed.  Installing...";
-                                      sudo apt-get -y install puppetmaster;
+                                      sudo apt-get -y -f install puppetmaster puppetmaster-common puppet-common;
                                      }
 
 ln -sf /vagrant/puppet.conf /etc/puppet/
