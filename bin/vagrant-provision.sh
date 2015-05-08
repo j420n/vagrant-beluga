@@ -6,15 +6,25 @@ then
   echo 'Found local vagrant.pp'
 fi
 
-#OPTION 1 - DEBIAN
-#Install Puppet Labs repositories.
-wget "https://apt.puppetlabs.com/puppetlabs-release-pc1-wheezy.deb"
-wget "https://apt.puppetlabs.com/puppetlabs-release-jessie.deb"
-wget "https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb"
-sudo dpkg -i puppetlabs-release-pc1-wheezy.deb
-sudo dpkg -i puppetlabs-release-jessie.deb
-sudo dpkg -i puppetlabs-release-wheezy.deb
+#Install Puppet Labs repositories. DEBIAN
+#wget "https://apt.puppetlabs.com/puppetlabs-release-pc1-wheezy.deb"
+#wget "https://apt.puppetlabs.com/puppetlabs-release-jessie.deb"
+#wget "https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb"
+#sudo dpkg -i puppetlabs-release-pc1-wheezy.deb
+#sudo dpkg -i puppetlabs-release-jessie.deb
+#sudo dpkg -i puppetlabs-release-wheezy.deb
+#sudo apt-get update
+
+#Install Puppet Labs repositories. UBUNTU
+wget "https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb"
+sudo dpkg -i puppetlabs-release-pc1-trusty.deb
 sudo apt-get update
+
+#Test for Puppet
+command -v puppet >/dev/null 2>&1 || {
+                                      echo >&2 "Puppet is required, but it is not installed.  Installing...";
+                                      sudo apt-get -y install puppet;
+                                     }
 
 ln -sf /vagrant/puppet.conf /etc/puppet/
 ln -sf /vagrant/puppetdb.conf /etc/puppet/
@@ -27,11 +37,7 @@ then
     sudo apt-get -y install puppetdb;
 fi
 
-#Test for Puppet
-command -v puppet >/dev/null 2>&1 || {
-                                      echo >&2 "Puppet is required, but it is not installed.  Installing...";
-                                      sudo apt-get -y install puppet;
-                                     }
+
 
 #Test for Puppet Master
 command -v puppetmaster >/dev/null 2>&1 || {
