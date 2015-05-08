@@ -16,14 +16,14 @@ fi
 #sudo apt-get update
 
 #Install Puppet Labs repositories. UBUNTU
-wget "https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb"
-sudo dpkg -i puppetlabs-release-pc1-trusty.deb
-sudo apt-get update
+#wget "https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb"
+#sudo dpkg -i puppetlabs-release-pc1-trusty.deb
+#sudo apt-get update
 
-#Test for Puppet
-command -v puppet >/dev/null 2>&1 || {
-                                      echo >&2 "Puppet is required, but it is not installed.  Installing...";
-                                      sudo apt-get -y install puppet;
+#Test for Puppet Master
+command -v puppet master >/dev/null 2>&1 || {
+                                      echo >&2 "Puppetmaster is required, but it is not installed.  Installing...";
+                                      sudo apt-get -y install puppetmaster;
                                      }
 
 ln -sf /vagrant/puppet.conf /etc/puppet/
@@ -35,19 +35,27 @@ if [ ! -d /etc/puppetdb ];
 then
     echo >&2 "PuppetDB is required, but it is not installed.  Installing...";
     sudo apt-get -y install puppetdb;
+    sudo apt-get -y install puppetdb-terminus;
+    echo >&2 "PuppetDB is Installed.";
+fi
+
+if [ -d /etc/puppet ];
+then
+    echo >&2 "The Puppet master has been found. Welcome to the Puppet show.";
+    sudo service puppetmaster restart;
+    sudo service puppetdb restart;
+    echo "The Puppet Master is ready to perform.";
 fi
 
 
 
-#Test for Puppet Master
-command -v puppetmaster >/dev/null 2>&1 || {
-                                      echo >&2 "Puppetmaster is required, but it is not installed.  Installing...";
-                                      sudo apt-get -y install puppetmaster;
-                                     }
 #Test for Puppet Librarian
 command -v librarian-puppet >/dev/null 2>&1 || {
-                                      echo >&2 "Librarian-puppet is required, but it is not installed.  Installing...";
+                                      echo >&2 "Librarian-puppet is required, which needs git-core. They are not installed yet...";
                                       sudo apt-get -y install librarian-puppet;
+                                      echo >&2 "Librarian-puppet Installed";
+                                      sudo apt-get install git-core -y;
+                                      echo >&2 "Git Installed";
                                      }
 
 #Temporary - need to add these to the base box?
@@ -65,8 +73,8 @@ command -v librarian-puppet >/dev/null 2>&1 || {
 #sudo apt-get install git-core -y
 #sudo gem install librarian-puppet --verbose
 
-cd /vagrant/modules
-librarian-puppet update --verbose
+#cd /vagrant/modules
+#librarian-puppet update --verbose
 
 if [ ! -f /vagrant/keys/private_key.pkcs7.pem ];
 then
