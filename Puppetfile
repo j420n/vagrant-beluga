@@ -3,8 +3,12 @@
 
 forge "https://forgeapi.puppetlabs.com"
 
-mod 'silex/beluga',
-    :git => 'https://github.com/SilexConsulting/puppet-beluga.git'
+#mod 'silex/beluga',
+#    :git => 'https://github.com/SilexConsulting/puppet-beluga.git'
+#
+mod 'j420n/beluga',
+    :git => 'https://github.com/j420n/puppet-beluga.git',
+    :ref => 'updates'
 
 mod 'silex/apache',
     :git => 'https://github.com/SilexConsulting/puppetlabs-apache.git'
