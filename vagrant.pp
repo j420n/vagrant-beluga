@@ -4,9 +4,6 @@ hiera_include("classes")
 stage { 'pre':
   before => Stage["main"],
 }
-class {'puppetdb':
-stage => 'pre',
-}
 
 #DECLARE DRUPAL SITE NAMES
 beluga::drupal_site {'silex' : }
