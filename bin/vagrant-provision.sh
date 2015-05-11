@@ -28,6 +28,8 @@ command -v puppet master >/dev/null 2>&1 || {
 
 ln -sf /vagrant/puppet.conf /etc/puppet/
 ln -sf /vagrant/puppetdb.conf /etc/puppet/
+ln -sf /vagrant/autosign.conf /etc/puppet/
+ln -sf /vagrant/auth.conf /etc/puppet/
 ln -sf /vagrant/routes.yaml /etc/puppet/
 
 #Test for PuppetDB
@@ -41,10 +43,10 @@ fi
 
 if [ -d /etc/puppet ];
 then
-    echo >&2 "The Puppet master has been found. Welcome to the Puppet show.";
-    sudo service puppetmaster restart;
-    sudo service puppetdb restart;
-    echo "The Puppet Master is ready to perform.";
+    echo >&2 "The local Puppet Master has been found. Welcome to the Puppet show.";
+    sudo /etc/init.d/puppetdb restart;
+    sudo /etc/init.d/puppetmaster restart;
+    sudo /etc/init.d/puppetqd restart;
 fi
 
 
@@ -61,6 +63,7 @@ command -v librarian-puppet >/dev/null 2>&1 || {
 #Temporary - need to add these to the base box?
 #sudo gem install hiera
 #sudo gem install hiera-eyaml
+sudo apt-get install hiera-eyaml -y
 
 #OPTION 2 - UBUNTU
 #Update Puppetfile dependencies using librarian-puppet from apt-get.
@@ -84,3 +87,27 @@ fi
 
 ln -sf /vagrant/hiera.yaml /etc/puppet/
 ln -sf /vagrant/hieradata /etc/
+ln -sf /vagrant/hiera.yaml /etc/
+sudo rm -rf /etc/puppet/manifests
+sudo rm -rf /etc/puppet/modules
+ln -sf /vagrant/manifests /etc/puppet/manifests
+ln -sf /vagrant/modules /etc/puppet/modules
+
+
+if [ ! -f /etc/puppet/environments/production ];
+then
+    sudo mkdir -p /etc/puppet/environments/production/manifests
+    sudo mkdir -p /etc/puppet/environments/production/modules
+    ln -sf /vagrant/vagrant.pp /etc/puppet/environments/production/manifests/
+    sudo chown -R puppet: /etc/puppet
+    sudo chown -R puppet: /var/lib/puppet
+fi
+
+if [ -d /etc/puppet ];
+then
+    echo >&2 "Restarting Puppet Services.";
+    sudo /etc/init.d/puppetdb restart;
+    sudo /etc/init.d/puppetmaster restart;
+    sudo /etc/init.d/puppetqd restart;
+    echo "The Puppet Master is now ready to perform.";
+fi
