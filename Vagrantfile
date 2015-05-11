@@ -27,14 +27,31 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # You will need to create the manifests directory and a manifest in
   # the file default.pp in the manifests_path directory.
   #
-  config.vm.provision "puppet" do |puppet|
-    puppet.manifests_path = "./"
-    puppet.module_path = "./modules"
-    puppet.manifest_file  = "vagrant.pp"
-    puppet.hiera_config_path = "hiera.yaml"
-    #puppet.options = "--verbose --debug"
+  # Puppet Masterless Provisioning
+  # config.vm.provision "puppet" do |puppet|
+  #   puppet.manifests_path = "./"
+  #   puppet.facter = {
+  #          "environment" => "production"
+  #        }
+  #   puppet.module_path = "./modules"
+  #   puppet.manifest_file  = "vagrant.pp"
+  #   puppet.hiera_config_path = "hiera.yaml"
+  #   #puppet.options = "--verbose --debug"
+  # end
+  #
+  #Puppet Agent/Master Provisioning
+  config.vm.provision "puppet_server" do |puppet|
+    puppet.puppet_server = "debian.vagrant"
+    puppet.puppet_node = "debian.vagrant"
+    #puppet.client_cert_path = "./puppet-certs/ca.pem"
+    #puppet.client_private_key_path = "./puppet-certs/debian.vagrant.pem"
+    puppet.options = "--verbose"
+    #puppet.options = "--debug"
+    #puppet.facter = {
+    #      "environment" => "production"
+    #}
   end
-
+  #
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
