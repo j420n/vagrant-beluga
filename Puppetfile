@@ -13,12 +13,15 @@ mod 'j420n/beluga',
 mod 'silex/apache',
     :git => 'https://github.com/SilexConsulting/puppetlabs-apache.git'
 
+mod 'silex/postgresql',
+    :git => 'https://github.com/SilexConsulting/puppetlabs-postgresql.git'
+
 mod 'puppet/concat',
     :git => 'https://github.com/Puppetlabs/puppetlabs-concat.git',
     :ref => '1.1.1'
 
 mod 'silex/jenkins',
-    :git => 'https://github.com/SilexConsulting/puppet-jenkins.git'
+    :git => 'https://github.com/j420n/puppet-jenkins.git'
 
 mod 'puppet/mysql',
     :git => 'https://github.com/Puppetlabs/puppetlabs-mysql.git'
