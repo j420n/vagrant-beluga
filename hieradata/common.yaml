@@ -53,7 +53,7 @@ postgresql::version: 3.4.1
 
 sshd_settings: {root_allowed: "no", password_allowed: "yes"}
 #JENKINS
-jenkins::config::config_hash:
+jenkins::config_hash:
         HTTP_PORT:
             value: 9090
         AJP_PORT:
