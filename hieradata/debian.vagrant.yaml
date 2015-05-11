@@ -1,0 +1,53 @@
+---
+#################
+#INCLUDE CLASSES#
+#################
+classes:
+    - beluga::postgresql_server
+    - beluga::params
+    - beluga::frontend_traffic_director
+    - beluga::apache_frontend_server
+    - beluga::mysql_server
+    - beluga::drush_server
+    - beluga::mail_server
+    - jenkins
+    - apt
+
+###################
+#APT CONFIGURATION#
+###################
+apt::always_apt_update: false
+apt::update_timeout: 20
+apt::update_tries: 2
+apt::keyserver: http://keyring.debian.org/
+
+######################
+#BELUGA CONFIGURATION#
+######################
+#PARAMS
+beluga::developer_tools::install_grunt: true
+beluga::developer_tools::install_git: true
+beluga::developer_tools::install_vim: true
+#beluga::params::hiera_data_dir: /vagrant/modules/beluga/files/hieradata
+beluga::params::wget_package: wget
+beluga::params::install_jdk: true
+beluga::params::jre_package: default-jre
+#APACHE_FRONTEND_SERVER
+beluga::apache_frontend_server::params::mpm_module: prefork
+beluga::apache_frontend_server::apache_port: 80
+#DRUPAL_SITE
+#Optional site_owner override
+#beluga::drupal_site::<SITE-NAME>::site_owner: <NEW-SITE-OWNER>
+#beluga::drupal_site::silex::use_make_file: true
+#beluga::drupal_site::silex::make_file_location: /vagrant/silex-drupal-7_distribution/distro.make
+#beluga::drupal_site::silex::site_owner: silex
+#beluga::drupal_site::silex::aliases:
+#      - "silex.dev"
+#      - "silex"
+#MYSQL_SERVER password is set to password
+#MYSQL_SERVER encypted password is set to password but wont work on your system with new keys. eyaml -s encrypt password.
+#beluga::mysql_server::admin_password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEATZn3jDWYijKGnfoW7JbuBp7h/0GQRVQEc/oqvVMogA6TwiGWGx6zqrvqFJIjzx/UIZOB45rfqKFuXOEmZDEx2srkCK7ps8d3cKpANj32amMugE15KfVc1Pixi7zkRCREIT3VkVwMwEE7kF+aXIYk0VJASwEPJ/CmGuet+4x6hqEn4OonR8iEEzJztruL8gT8gv0QxAIqlWqVjbdsrmVfbmzZbzcv5W1eRm3D9rBhp+5amByxlEEIWqOa1VPL3CKIDGUEYKQH9xEoNc8vR9UT2t42wT5Jq8RjcviVL4K2za3s4Amji0FB84dEPQmjEOV5m+2wi4R5z3O2T5P6F/mtmjA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBA+9GkRCKSXKsejzWnVj9Z5gBCrvjjY48rG8JzCK9cYA0LE]
+beluga::mysql_server::admin_password: dev
+beluga::mysql_server::admin_user: root
+beluga::postgress_server::admin_password: password
+postgresql::version: 3.4.1
