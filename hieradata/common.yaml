@@ -58,6 +58,16 @@ jenkins::config_hash:
             value: 9090
         AJP_PORT:
             value: 9091
-jenkins::plugin { 'myplugin':
+            
+jenkins::plugin { 'job-import-plugin':
    source => 'https://updates.jenkins-ci.org/download/plugins/job-import-plugin/1.2/job-import-plugin.hpi',
+}
+jenkins::plugin { 'git-plugin':
+   source => 'https://updates.jenkins-ci.org/download/plugins/git/2.3.5/git.hpi',
+}
+jenkins::plugin { 'git-client-plugin':
+   source => 'https://updates.jenkins-ci.org/download/plugins/git-client/1.17.1/git-client.hpi',
+}
+jenkins::plugin { 'publish-over-ssh-plugin':
+   source => 'https://updates.jenkins-ci.org/download/plugins/publish-over-ssh/1.12/publish-over-ssh.hpi',
 }
