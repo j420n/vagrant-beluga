@@ -58,3 +58,6 @@ jenkins::config_hash:
             value: 9090
         AJP_PORT:
             value: 9091
+jenkins::plugin { 'myplugin':
+   source => 'https://updates.jenkins-ci.org/download/plugins/job-import-plugin/1.2/job-import-plugin.hpi',
+}
