@@ -20,8 +20,8 @@ mod 'puppet/concat',
     :git => 'https://github.com/Puppetlabs/puppetlabs-concat.git',
     :ref => '1.1.1'
 
-mod 'silex/jenkins',
-    :git => 'https://github.com/j420n/puppet-jenkins.git'
+mod 'jenkinsci/jenkins',
+    :git => 'https://github.com/jenkinsci/puppet-jenkins.git'
 
 mod 'puppet/mysql',
     :git => 'https://github.com/Puppetlabs/puppetlabs-mysql.git'
@@ -45,5 +45,15 @@ mod 'silex/postfix',
 mod 'puppet/vcsrepo',
     :git => 'https://github.com/Puppetlabs/puppetlabs-vcsrepo.git'
 
+mod 'puppet/haproxy',
+    :git => 'https://github.com/puppetlabs/puppetlabs-haproxy.git'
+
+mod 'garethr/docker',
+    :git => 'https://github.com/garethr/garethr-docker.git'
+
+mod 'silex/varnish',
+    :git => 'https://github.com/SilexConsulting/puppet-varnish.git'
+
 mod 'jonhattan/drush',
     :git => 'https://github.com/jonhattan/puppet-drush.git'
+
