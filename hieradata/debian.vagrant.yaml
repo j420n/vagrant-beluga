@@ -3,6 +3,7 @@
 #INCLUDE CLASSES#
 #################
 classes:
+    - apt
     - beluga::postgresql_server
     - beluga::params
     - beluga::frontend_traffic_director
@@ -10,8 +11,8 @@ classes:
     - beluga::mysql_server
     - beluga::drush_server
     - beluga::mail_server
+    - haproxy
     - jenkins
-    - apt
 
 ###################
 #APT CONFIGURATION#
@@ -44,6 +45,32 @@ beluga::apache_frontend_server::apache_port: 80
 #beluga::drupal_site::silex::aliases:
 #      - "silex.dev"
 #      - "silex"
+#HAPROXY
+#  class { 'haproxy': }
+#  haproxy::listen { 'puppet00':
+#    collect_exported => false,
+#    ipaddress        => $::ipaddress,
+#    ports            => '8140',
+#  }
+#haproxy::listen:
+#    - puppet00:
+#        collect_exported: false
+#        ipaddress: 0.0.0.0
+#        ports: 8141
+#
+#haproxy::balancermember:
+#    - 'master00':
+#        listening_service: 'puppet00'
+#        server_names     : 'prod01.example.com'
+#        ipaddresses      : 10.0.0.10
+#        ports            : 8141
+#        options          : 'check'
+#    - 'master01':
+#        listening_service: 'puppet00'
+#        server_names     : 'prod02.example.com'
+#        ipaddresses      : '10.0.0.11'
+#        ports            : '8141'
+#        options          : 'check'
 #MYSQL_SERVER password is set to password
 #MYSQL_SERVER encypted password is set to password but wont work on your system with new keys. eyaml -s encrypt password.
 #beluga::mysql_server::admin_password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEATZn3jDWYijKGnfoW7JbuBp7h/0GQRVQEc/oqvVMogA6TwiGWGx6zqrvqFJIjzx/UIZOB45rfqKFuXOEmZDEx2srkCK7ps8d3cKpANj32amMugE15KfVc1Pixi7zkRCREIT3VkVwMwEE7kF+aXIYk0VJASwEPJ/CmGuet+4x6hqEn4OonR8iEEzJztruL8gT8gv0QxAIqlWqVjbdsrmVfbmzZbzcv5W1eRm3D9rBhp+5amByxlEEIWqOa1VPL3CKIDGUEYKQH9xEoNc8vR9UT2t42wT5Jq8RjcviVL4K2za3s4Amji0FB84dEPQmjEOV5m+2wi4R5z3O2T5P6F/mtmjA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBA+9GkRCKSXKsejzWnVj9Z5gBCrvjjY48rG8JzCK9cYA0LE]
