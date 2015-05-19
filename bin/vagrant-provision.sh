@@ -7,6 +7,8 @@ then
 fi
 
 #Install Puppet Labs repositories. DEBIAN
+#SET hostname as vagrant will only set it to debian -> https://github.com/mitchellh/vagrant/issues/3271
+#hostname debian.vagrant
 #wget "https://apt.puppetlabs.com/puppetlabs-release-pc1-wheezy.deb"
 #wget "https://apt.puppetlabs.com/puppetlabs-release-jessie.deb"
 #wget "https://apt.puppetlabs.com/puppetlabs-release-wheezy.deb"
@@ -16,6 +18,8 @@ fi
 #sudo apt-get update
 
 #Install Puppet Labs repositories. UBUNTU
+#SET hostname as vagrant will only set it to ubuntu -> https://github.com/mitchellh/vagrant/issues/3271
+#hostname ubuntu.vagrant
 #wget "https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb"
 #sudo dpkg -i puppetlabs-release-pc1-trusty.deb
 #sudo apt-get update
@@ -47,6 +51,7 @@ then
     sudo /etc/init.d/puppetdb restart;
     sudo /etc/init.d/puppetmaster restart;
     sudo /etc/init.d/puppetqd restart;
+    puppet agent --enable
 fi
 
 
@@ -94,11 +99,12 @@ ln -sf /vagrant/manifests /etc/puppet/manifests
 ln -sf /vagrant/modules /etc/puppet/modules
 
 
-if [ ! -f /etc/puppet/environments/production ];
+if [ ! -f /etc/puppet/environments/development ];
 then
-    sudo mkdir -p /etc/puppet/environments/production/manifests
-    sudo mkdir -p /etc/puppet/environments/production/modules
-    ln -sf /vagrant/vagrant.pp /etc/puppet/environments/production/manifests/
+    echo >&2 "Creating development environment.";
+    sudo mkdir -p /etc/puppet/environments/development/manifests
+    ln -sf /vagrant/vagrant.pp /etc/puppet/environments/development/manifests/
+    ln -sf /vagrant/modules /etc/puppet/environments/development/
     sudo chown -R puppet: /etc/puppet
     sudo chown -R puppet: /var/lib/puppet
 fi
