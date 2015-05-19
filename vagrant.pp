@@ -4,6 +4,18 @@ hiera_include("classes")
 stage { 'pre':
   before => Stage["main"],
 }
+jenkins::plugin { 'git':
+  source => 'https://updates.jenkins-ci.org/download/plugins/git/2.3.5/git.hpi',
+}
+jenkins::plugin { 'git-client':
+  source => 'https://updates.jenkins-ci.org/download/plugins/git-client/1.17.1/git-client.hpi',
+}
+jenkins::plugin { 'publish-over-ssh':
+  source => 'https://updates.jenkins-ci.org/download/plugins/publish-over-ssh/1.12/publish-over-ssh.hpi'
+}
+jenkins::plugin { 'job-import-plugin':
+  source => 'https://updates.jenkins-ci.org/download/plugins/job-import-plugin/1.2/job-import-plugin.hpi'
+}
 
 #DECLARE DRUPAL SITE NAMES
 beluga::drupal_site {'silex' : }
