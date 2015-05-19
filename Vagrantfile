@@ -15,12 +15,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box     = "debian-8"
   config.vm.box_url = "https://github.com/holms/vagrant-jessie-box/releases/download/Jessie-v0.1/Debian-jessie-amd64-netboot.box"
 
+  config.vm.hostname = "debian.vagrant"
   # Use a shell provisioner to Vagrant here which will use
   # rake inside the VM to run vagrant:provision
   # Put a custom vagrant.pp in this directory if you want to run your own manifest.
   config.vm.provision :shell, :path => "bin/vagrant-provision.sh"
-
-  config.vm.hostname = "debian.vagrant"
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
   # are contained in a directory path relative to this Vagrantfile.
@@ -48,7 +47,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.options = "--verbose"
     #puppet.options = "--debug"
     #puppet.facter = {
-    #      "environment" => "production"
+    #      "environment" => "development"
     #}
   end
   #
