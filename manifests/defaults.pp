@@ -20,8 +20,8 @@ path => [
 
 # Configure extlookup - we're using this to keep sensitive data
 #  out of version control and away from third parties.
-$extlookup_datadir = "${settings::manifestdir}/extdata"
-$extlookup_precedence = ["%{fqdn}", "domain_%{domain}", "common"]
+#$extlookup_datadir = "${settings::manifestdir}/extdata"
+#$extlookup_precedence = ["%{fqdn}", "domain_%{domain}", "common"]
 
 # Run Stages
 stage { 'register': before => Stage['pre'] }
