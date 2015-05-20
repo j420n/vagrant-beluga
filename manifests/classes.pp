@@ -1,7 +1,7 @@
 class wuk_defaults{
   class {'all_defaults': }
-  class {'wuk_groups': }
-  class {'wuk_users': }
+  class {'beluga_groups': }
+  class {'beluga_users': }
 }
 
 class all_defaults {
@@ -11,7 +11,7 @@ class all_defaults {
 }
 
 class prod_defaults {
-  class {'wuk_defaults': }
+  class {'beluga_defaults': }
 
   class { 'sudo':
     purge                     => false,
@@ -19,7 +19,7 @@ class prod_defaults {
   }
 }
 
-class wuk_users {
+class beluga_users {
   beluga::user { 'noels':
     uid => 5003,
     groups => ['webteam'],
@@ -49,7 +49,7 @@ class wuk_users {
 
 }
 
-class wuk_groups {
+class beluga_groups {
   group {
     "admins":
     ensure  => present,
