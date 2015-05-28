@@ -1,0 +1,26 @@
+---
+#################
+#INCLUDE CLASSES#
+#################
+classes:
+    - beluga::docker
+    - varnish
+    - haproxy
+    - jenkins
+
+#DOCKER
+beluga::docker::url: 'https://get.docker.com'
+#JENKINS
+jenkins::configure_firewall: false
+jenkins::config_hash:
+        HTTP_PORT:
+            value: 9090
+        AJP_PORT:
+            value: 9091
+
+#jenkins::plugin:
+#    'job-import-plugin':
+#        source: "https://updates.jenkins-ci.org/download/plugins/job-import-plugin/1.2/job-import-plugin.hpi"
+
+
+postgresql::version: 9.4
