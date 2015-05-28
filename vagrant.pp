@@ -19,7 +19,8 @@ notify{'Using vagrant.pp':}
 #}
 
 #DECLARE DRUPAL SITE NAMES
-beluga::drupal_site {'silex' : }
+beluga::drupal_site {'beluga-drupal' : }
+beluga::custom_site {'beluga-custom' : }
 
 #DECLARE CUSTOM SITE NAMES
 #beluga::custom_site {'silex' : }
