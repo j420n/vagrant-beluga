@@ -48,23 +48,11 @@ beluga::drupal_site::web_group: www-data
 beluga::drupal_site::silex::use_make_file: false
 beluga::drupal_site::silex::drush_make_file_location: /vagrant/silex_d7/distro.make
 beluga::drupal_site::silex::drush_build_path: /var/www/private/drush_make_builds/silex/test
-
 #MYSQL_SERVER password is set to password
 #MYSQL_SERVER encypted password is set to password but wont work on your system with new keys. eyaml -s encrypt password.
 #beluga::mysql_server::admin_password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEATZn3jDWYijKGnfoW7JbuBp7h/0GQRVQEc/oqvVMogA6TwiGWGx6zqrvqFJIjzx/UIZOB45rfqKFuXOEmZDEx2srkCK7ps8d3cKpANj32amMugE15KfVc1Pixi7zkRCREIT3VkVwMwEE7kF+aXIYk0VJASwEPJ/CmGuet+4x6hqEn4OonR8iEEzJztruL8gT8gv0QxAIqlWqVjbdsrmVfbmzZbzcv5W1eRm3D9rBhp+5amByxlEEIWqOa1VPL3CKIDGUEYKQH9xEoNc8vR9UT2t42wT5Jq8RjcviVL4K2za3s4Amji0FB84dEPQmjEOV5m+2wi4R5z3O2T5P6F/mtmjA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBA+9GkRCKSXKsejzWnVj9Z5gBCrvjjY48rG8JzCK9cYA0LE]
 beluga::mysql_server::admin_password: dev
 beluga::mysql_server::admin_user: root
 beluga::postgress_server::admin_password: password
-postgresql::version: 3.4.1
 
 sshd_settings: {root_allowed: "no", password_allowed: "yes"}
-#JENKINS
-jenkins::config_hash:
-        HTTP_PORT:
-            value: 9090
-        AJP_PORT:
-            value: 9091
-
-#jenkins::plugin:
-#    'job-import-plugin':
-#        source: "https://updates.jenkins-ci.org/download/plugins/job-import-plugin/1.2/job-import-plugin.hpi"
