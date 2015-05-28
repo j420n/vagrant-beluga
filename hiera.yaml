@@ -4,8 +4,11 @@
     - yaml
 
 :hierarchy:
-    - "%{::fqdn}"
     - common
+    - "%{::domain}"
+    - "%{::environment}"
+
+
 
 :yaml:
     :datadir: '/etc/hieradata'
