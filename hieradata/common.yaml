@@ -1,59 +1,77 @@
----
 #################
 #INCLUDE CLASSES#
 #################
 classes:
-    - beluga::postgresql_server
-    - beluga::params
-    - beluga::frontend_traffic_director
     - beluga::apache_frontend_server
     - beluga::mysql_server
-    - beluga::drush_server
-    - beluga::mail_server
-    - jenkins
-    - apt
-
-###################
-#APT CONFIGURATION#
-###################
-apt::always_apt_update: false
-apt::update_timeout: 30
-apt::update_tries: 3
+    - beluga::params
+    - beluga::drupal_site
+    - nginx::config
+    - nginx::service
+    - nginx::package
 
 ######################
 #BELUGA CONFIGURATION#
 ######################
 #PARAMS
-beluga::developer_tools::install_grunt: true
-beluga::developer_tools::install_git: true
-beluga::developer_tools::install_vim: true
+allow_virtual: false
 #beluga::params::hiera_data_dir: /vagrant/modules/beluga/files/hieradata
 beluga::params::wget_package: wget
 beluga::params::install_jdk: true
 beluga::params::jre_package: default-jre
 #APACHE_FRONTEND_SERVER
-beluga::apache_frontend_server::params::mpm_module: prefork
-beluga::apache_frontend_server::apache_port: 80
-#DRUPAL_SITE
-beluga::drupal_site::web_user: www-data
-beluga::drupal_site::web_group: www-data
-#Optional site_owner override
-#beluga::drupal_site::<SITE-NAME>::site_owner: <SITE-OWNER>
-#beluga::drupal_site::<SITE-NAME>::use_make_file: true
-#beluga::drupal_site::<SITE-NAME>::make_file_location: /vagrant/drupal-7/distro.make
-#beluga::drupal_site::<SITE-NAME>::site_owner: <SITE-OWNER>
-#beluga::drupal_site::<SITE-NAME>::aliases:
-#      - "<SITE-NAME>.dev"
-#Optional use drush make file.
-#beluga::drupal_site::<SITE-NAME>::use_make_file: false
-#beluga::drupal_site::<SITE-NAME>::drush_make_file_location: /vagrant/silex_d7/distro.make
-#beluga::drupal_site::<SITE-NAME>::drush_build_path: /var/www/private/drush_make_builds/<SITE-NAME>/test
+#beluga::apache_frontend_server::params::mpm_module: prefork
+#beluga::apache_frontend_server::apache_port: 80
+#MYSQL
+mysql::server::override_options:
+    mysqld:
+        max_connections: 1024
+        bind-address : 0.0.0.0
+
+#############
+#DRUPAL_SITE#
+#############
+#beluga::drupal_site::{$NAME$}::db_user: {$name$}
+#beluga::drupal_site::{$NAME$}::db_pass: {$name$}
+#beluga::drupal_site::{$NAME$}::db_name: {$name$}
+#beluga::drupal_site::{$NAME$}::web_host: localhost
+#beluga::drupal_site::{$NAME$}::web_user: www-data
+#beluga::drupal_site::{$NAME$}::web_group: www-data
+#beluga::drupal_site::{$NAME$}::docroot: /var/www/drupal/${name}/current
+#beluga::drupal_site::{$NAME$}::drupal_site_dir: /var/www/drupal
+#beluga::drupal_site::{$NAME$}::drupal_file_dir: /var/www/files
+#beluga::drupal_site::{$NAME$}::private_file_dir: /var/www/private
+#beluga::drupal_site::{$NAME$}::site_owner: beluga
+#beluga::drupal_site::{$NAME$}::site_url: beluga.com
+#beluga::drupal_site::{$NAME$}::site_aliases:
+        # - site_alias
+#beluga::drupal_site::{$NAME$}::site_admin: admin@localhost
+#beluga::drupal_site::{$NAME$}::port: 80
+#beluga::drupal_site::{$NAME$}::ssl_port: 443
+#beluga::drupal_site::{$NAME$}::use_make_file: false
+
+beluga::drupal_site::silex::site_owner: beluga
+beluga::drupal_site::silex::docroot: /var/www/beluga/current/
+beluga::drupal_site::silex::web_user: www-data
+beluga::drupal_site::silex::web_group: www-data
+beluga::drupal_site::silex::use_make_file: true
+beluga::drupal_site::silex::make_file_location: /vagrant/silex-drupal-7_distribution/distro.make
+beluga::drupal_site::silex::site_owner: silex
+beluga::drupal_site::silex::site_aliases:
+      - "beluga.silex"
+
+######################
+#DOCKER CONFIGURATION#
+######################
+#docker::manage_kernel: false
+#docker::tcp_bind: 'tcp://127.0.0.1:4243'
+#docker::socket_bind: 'unix:///var/run/docker.sock'
 
 #MYSQL_SERVER password is set to password
 #MYSQL_SERVER encypted password is set to password but wont work on your system with new keys. eyaml -s encrypt password.
 #beluga::mysql_server::admin_password: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEATZn3jDWYijKGnfoW7JbuBp7h/0GQRVQEc/oqvVMogA6TwiGWGx6zqrvqFJIjzx/UIZOB45rfqKFuXOEmZDEx2srkCK7ps8d3cKpANj32amMugE15KfVc1Pixi7zkRCREIT3VkVwMwEE7kF+aXIYk0VJASwEPJ/CmGuet+4x6hqEn4OonR8iEEzJztruL8gT8gv0QxAIqlWqVjbdsrmVfbmzZbzcv5W1eRm3D9rBhp+5amByxlEEIWqOa1VPL3CKIDGUEYKQH9xEoNc8vR9UT2t42wT5Jq8RjcviVL4K2za3s4Amji0FB84dEPQmjEOV5m+2wi4R5z3O2T5P6F/mtmjA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBA+9GkRCKSXKsejzWnVj9Z5gBCrvjjY48rG8JzCK9cYA0LE]
 beluga::mysql_server::admin_password: dev
 beluga::mysql_server::admin_user: root
-beluga::postgress_server::admin_password: password
+beluga::postgresql_server::admin_password: password
 
 sshd_settings: {root_allowed: "no", password_allowed: "yes"}
